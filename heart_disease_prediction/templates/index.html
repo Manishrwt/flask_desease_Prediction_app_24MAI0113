@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEART DISEASE PREDICTION - 24MAI0113 - MANISH RAWAT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to right, #ffcccb, #ffa07a);
+            color: #333;
+            min-height: 100vh;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #5cb85c;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+            padding: 20px;
+            background-color: white;
+            color: #5cb85c;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #d9534f;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            width: 100%;
+        }
+        .footer-nav {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .footer-nav a {
+            margin: 0 10px;
+            color: #666;
+            text-decoration: none;
+        }
+        .footer-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title-bar {
+                flex-direction: column;
+                align-items: center;
+                font-size: 18px;
+                text-align: center;
+            }
+            .navbar a {
+                font-size: 16px;
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar a {
+                font-size: 14px;
+                margin: 0 8px;
+            }
+            .container, .title-bar {
+                width: 95%;
+                padding: 20px;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact Info</a>
+    </div>
+
+    <div class="title-bar">
+        <span>REG NO: 24MAI0113</span>
+        <span>HEART DISEASE PREDICTION</span>
+        <span>NAME: MANISH RAWAT</span>
+    </div>
+
+    <div class="container">
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="name">NAME:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">AGE:</label>
+                <input type="number" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="cholesterol">CHOLESTROL LEVEL:</label>
+                <input type="number" name="cholesterol" required>
+            </div>
+            <div class="form-group">
+                <label for="blood_pressure">RESTING BLOOD PRESSURE:</label>
+                <input type="number" name="blood_pressure" required>
+            </div>
+            <button type="submit">PREDICT</button>
+        </form>
+        {% if result %}
+        <div class="result">
+            {{ result }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Heart Disease Prediction App Made By Manish Rawat</p>
+        <div class="footer-nav">
+            <a href="#about">About</a> |
+            <a href="#contact">Contact Info</a>
+        </div>
+    </div>
+
+    <div id="about" class="footer">
+        <h2>About</h2>
+        <p>This application uses machine learning to predict the likelihood of heart disease based on input features.</p>
+    </div>
+
+    <div id="contact" class="footer">
+        <h2>Contact Info</h2>
+        <p>If you have any questions or feedback, please reach out to <strong>manish.rawat2024@vitstudent.ac.in</strong>.</p>
+    </div>
+</body>
+</html>
